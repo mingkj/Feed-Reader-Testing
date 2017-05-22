@@ -21,7 +21,10 @@ $(function () {
             expect(allFeeds.length).not.toBe(0);
         });
 
+
+        // 函数用于遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的
         function sameDetection(string) {
+
             allFeeds.forEach(function (item) {
                 expect(item[string]).toBeDefined();
                 expect(item[string].length).not.toBe(0);
@@ -35,16 +38,7 @@ $(function () {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
         it('Item url are defined', function () {
-            // 遍历 allFeeds 对象
-            /*  allFeeds.forEach(function (item) {
-             expect(item.url).toBeDefined();
-             expect(item.url.length).not.toBe(0);
-
-             });*/
-
             sameDetection('url');
-            
-
         });
 
 
@@ -52,11 +46,6 @@ $(function () {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
         it('Item name are defined', function () {
-            /* allFeeds.forEach(function (item) {
-             expect(item.name).toBeDefined();
-             expect(item.name.length).not.toBe(0);
-
-             });*/
             sameDetection('name');
         });
 
@@ -111,17 +100,12 @@ $(function () {
          * 和异步的 done() 函数。
          */
         beforeEach(function (done) {
-
-            loadFeed(0, function () {
-
-                done();
-            });
+            loadFeed(0, done);
         });
 
-        it('should grab some articles', function (done) {
+        it('should grab some articles', function () {
             // 大于 0 则说明至少有一个 .entry 的元素
             expect($('.feed .entry').length).toBeGreaterThan(0);
-            done();
         });
 
     });
@@ -135,14 +119,14 @@ $(function () {
          * 记住，loadFeed() 函数是异步的。
          */
 
-        // 定义变量，用于保存旧的内容。
         var feed = $('.feed');
+        // 定义变量，用于保存旧的内容。
         var oldFeed;
-
 
         beforeEach(function (done) {
 
             oldFeed = feed.html();
+            // console.log(oldFeed);
 
             loadFeed(2, function () {
 
@@ -150,11 +134,10 @@ $(function () {
             });
         });
 
-        it('should change articles', function (done) {
+        it('should change articles', function () {
             // 二者不同则说明源的内容改变了
             expect(feed.html()).not.toEqual(oldFeed);
 
-            done();
         });
 
     });
