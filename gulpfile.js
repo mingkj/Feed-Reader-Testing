@@ -52,7 +52,7 @@ gulp.task('cssmin',function(){
 });
 
 gulp.task('watch',function(){
-    gulp.watch('src/js/app.js',['uglify']);
+    gulp.watch('src/jasmine/spec/feedreader.js',['uglify']);
 });
 
 gulp.task('default',function(){
