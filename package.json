@@ -1,0 +1,27 @@
+{
+  "name": "feed-reader-testing",
+  "version": "1.0.0",
+  "description": "这是一个用 [Jasmine](http://jasmine.github.io/) 进行测试的基于 Web 的 RSS 阅读器。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://mingkj.github.io/Feed-Reader-Testing"
+  },
+  "keywords": [
+    "jasmine"
+  ],
+  "author": "ming",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^3.1.0",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-imagemin": "^3.2.0",
+    "gulp-uglify": "^3.0.0"
+  }
+}
