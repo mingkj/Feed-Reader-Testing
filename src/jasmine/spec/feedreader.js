@@ -21,17 +21,30 @@ $(function () {
             expect(allFeeds.length).not.toBe(0);
         });
 
+        function sameDetection(string) {
+            allFeeds.forEach(function (item) {
+                expect(item[string]).toBeDefined();
+                expect(item[string].length).not.toBe(0);
+
+            });
+
+        }
+
 
         /* TODO:
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
         it('Item url are defined', function () {
             // 遍历 allFeeds 对象
-            allFeeds.forEach(function (item) {
-                expect(item.url).toBeDefined();
-                expect(item.url.length).not.toBe(0);
+            /*  allFeeds.forEach(function (item) {
+             expect(item.url).toBeDefined();
+             expect(item.url.length).not.toBe(0);
 
-            });
+             });*/
+
+            sameDetection('url');
+            
+
         });
 
 
@@ -39,11 +52,12 @@ $(function () {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有名字字段而且不是空的。
          */
         it('Item name are defined', function () {
-            allFeeds.forEach(function (item) {
-                expect(item.name).toBeDefined();
-                expect(item.name.length).not.toBe(0);
+            /* allFeeds.forEach(function (item) {
+             expect(item.name).toBeDefined();
+             expect(item.name.length).not.toBe(0);
 
-            });
+             });*/
+            sameDetection('name');
         });
 
     });
@@ -123,9 +137,12 @@ $(function () {
 
         // 定义变量，用于保存旧的内容。
         var feed = $('.feed');
-        var oldFeed = feed.html();
+        var oldFeed;
+
 
         beforeEach(function (done) {
+
+            oldFeed = feed.html();
 
             loadFeed(2, function () {
 
